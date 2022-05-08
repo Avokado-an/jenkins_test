@@ -16,7 +16,7 @@ public class CalculationServiceTest {
     public void testCalculateExpression() {
         double expected = 9;
         Assertions.assertEquals(
-                calculationService.calculateExpression("5", "4", Operation.PLUS), 9
+                calculationService.calculateExpression("5", "4", Operation.PLUS), 8
         );
     }
 }
