@@ -8,6 +8,7 @@ class TestCiCdApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
