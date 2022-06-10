@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage ('Test & Build Artifact') {
             agent {
-                docker {
+                any {
                     image 'openjdk:11'
                     args '-v "$PWD":/app'
                     reuseNode true
