@@ -13,7 +13,7 @@ pipeline {
         stage ('Test & Build Artifact') {
             agent {
                 any {
-                    image 'openjdk:11'
+                    image 'openjdk:8'
                     args '-v "$PWD":/app'
                     reuseNode true
                 }
