@@ -24,11 +24,17 @@ pipeline {
             }
         }
         stage ('Build docker image') {
+            agent {
+                docker { image 'node:16.13.1-alpine' }
+            }
             steps {
                 sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
             }
         }
         stage ('Deploy') {
+            agent {
+                docker { image 'node:16.13.1-alpine' }
+            }
             steps {
                 sh 'docker run -p 8070:8070 jenkins/test-ci-cd'
             }
