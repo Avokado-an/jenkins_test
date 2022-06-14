@@ -1,43 +1,30 @@
-pipeline {
-    agent any
-
-    triggers{
-        githubPush()
-    }
-
-    environment {
-        REMOTE_ADDRESS = "REPLACE_WITH_REMOTE_ADDRESS"
-    }
-
-    node {
-        stage ('Test & Build Artifact') {
-            agent {
-                any {
-                    image 'openjdk:11'
-                    args '-v "$PWD":/app'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh 'chmod +x gradlew'
-                sh './gradlew clean build'
+node {
+    stage ('Test & Build Artifact') {
+        agent {
+            any {
+                image 'openjdk:11'
+                args '-v "$PWD":/app'
+                reuseNode true
             }
         }
-        stage('SonarQube analysis') {
-            withSonarQubeEnv() {
-              sh './gradlew sonarqube'
-            }
+        steps {
+            sh 'chmod +x gradlew'
+            sh './gradlew clean build'
         }
-        //stage ('Build docker image') {
-        //    steps {
-        //        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
-        //    }
-        //}
-        //stage ('Deploy') {
-        //    steps {
-        //        sh 'docker run -p 8070:8070 jenkins/test-ci-cd'
-        //    }
-        //}
-
     }
+    stage('SonarQube analysis') {
+        withSonarQubeEnv() {
+          sh './gradlew sonarqube'
+        }
+    }
+    //stage ('Build docker image') {
+    //    steps {
+    //        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
+    //    }
+    //}
+    //stage ('Deploy') {
+    //    steps {
+    //        sh 'docker run -p 8070:8070 jenkins/test-ci-cd'
+    //    }
+    //}
 }
