@@ -9,7 +9,7 @@ pipeline {
         REMOTE_ADDRESS = "REPLACE_WITH_REMOTE_ADDRESS"
     }
 
-    stages {
+    node {
         stage ('Test & Build Artifact') {
             agent {
                 any {
