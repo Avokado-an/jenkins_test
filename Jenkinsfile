@@ -16,6 +16,7 @@ node {
                 error "Pipeline aborted - quality gate failure: ${qg.status}"
             }
         }
+    }
     //stage ('Build docker image') {
     //    steps {
     //        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
