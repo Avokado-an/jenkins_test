@@ -18,7 +18,7 @@ node {
         }
     }
     stage ('Build docker image') {
-        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
+        sh './gradlew dockerBuild'
     }
     //stage ('Build docker image') {
     //    steps {
