@@ -23,6 +23,11 @@ pipeline {
                 sh './gradlew clean build'
             }
         }
+        stage('SonarQube analysis') {
+            withSonarQubeEnv() {
+              sh './gradlew sonarqube'
+            }
+        }
         //stage ('Build docker image') {
         //    steps {
         //        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
@@ -33,5 +38,6 @@ pipeline {
         //        sh 'docker run -p 8070:8070 jenkins/test-ci-cd'
         //    }
         //}
+
     }
 }
