@@ -23,11 +23,11 @@ pipeline {
                 sh './gradlew clean build'
             }
         }
-        stage ('Build docker image') {
-            steps {
-                sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
-            }
-        }
+        //stage ('Build docker image') {
+        //    steps {
+        //        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
+        //    }
+        //}
         //stage ('Deploy') {
         //    steps {
         //        sh 'docker run -p 8070:8070 jenkins/test-ci-cd'
