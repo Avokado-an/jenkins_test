@@ -1,9 +1,7 @@
 node {
     stage ('Test & Build Artifact') {
-        steps {
-            sh 'chmod +x gradlew'
-            sh './gradlew clean build'
-        }
+        sh 'chmod +x gradlew'
+        sh './gradlew clean build'
     }
     stage('SonarQube analysis') {
         withSonarQubeEnv() {
