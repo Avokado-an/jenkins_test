@@ -4,6 +4,7 @@ node {
     //    sh './gradlew clean build'
     //}
     stage('SonarQube analysis') {
+        sh 'chmod +x gradlew'
         withSonarQubeEnv() {
           sh './gradlew sonarqube'
         }
