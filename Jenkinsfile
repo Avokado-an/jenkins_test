@@ -18,9 +18,7 @@ node {
         }
     }
     stage ('Build docker image') {
-        steps {
-            sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
-        }
+        sh 'docker build --build-arg JAR_FILE=build/libs/*.jar -t jenkins/test-ci-cd .'
     }
     //stage ('Build docker image') {
     //    steps {
